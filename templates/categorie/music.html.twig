@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div id="categorieTitle"> 
+    <h1>Les offres en musique</h1>
+</div>
+
+<div id="annonces">
+    {% for prestaMusic in prestaMusic %}
+        <div id="annonce">
+            <p class="pix"><img src ={{ asset('build/catMusique.jpg') }} width="350px" height="200px" alt=""></p>
+            <h3 class="categorie">Musique</h3>
+            <p class="identity">{{ prestaMusic.nom }} {{ prestaMusic.prenom }}</p>
+            <p>Description: {{ prestaMusic.information }} </p>
+
+            <a href="#">Plus d'information</a>
+            
+        
+        </div>
+{% endfor %}
+</div> 
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div id="categorieTitle"> 
+    <h1>Les offres en photo</h1>
+</div>
+
+<div id="annonces">
+    {% for prestaPix in prestaPix %}
+        <div id="annonce">
+            <p class="pix"><img src ={{ asset('build/catPix.jpg') }} width="350px" height="200px" alt=""></p>
+            <h3 class="categorie">Photos</h3>
+            <p class="identity">{{ prestaPix.nom }} {{ prestaPix.prenom }}</p>
+            <p>Description: {{ prestaPix.information }} </p>
+
+            <a href="#">Plus d'information</a>
+            
+        
+        </div>
+{% endfor %}
+</div> 
+{% endblock %}

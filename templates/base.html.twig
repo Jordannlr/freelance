@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+    </head>
+    <body>
+
+    <!-- NAVBAR RESPONSIVE -->
+    <ul class="topnav">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="annonce">Déposer une annonce</a></li>
+        <li><a href="contact">Contact</a></li>
+    </ul>
+
+        <div class="container">
+        {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+    </body>
+</html>

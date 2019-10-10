@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<div id="categorieTitle"> 
+    <h1>Les offres en informatique</h1>
+</div>
+
+<div id="annonces">
+    {% for prestaIt in prestaIt %}
+        <div id="annonce">
+            <p class="pix"><img src ={{ asset('build/catIT.jpg') }} width="350px" height="200px" alt=""></p>
+            <h3 class="categorie">Informatique</h3>
+            <p class="identity">{{ prestaIt.nom }} {{ prestaIt.prenom }}</p>
+            <p>Description: {{ prestaIt.information }} </p>
+
+            <a href="#">Plus d'information</a>
+            
+        
+        </div>
+{% endfor %}
+</div> 
+{% endblock %}
