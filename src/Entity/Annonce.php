@@ -37,11 +37,6 @@ class Annonce
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=70)
-     */
-    private $region;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $pretentions;
@@ -60,6 +55,11 @@ class Annonce
      * @ORM\Column(type="string", length=20)
      */
     private $phoneNumber;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Regions", inversedBy="annonces")
+     */
+    private $region;
 
     public function getId(): ?int
     {
@@ -114,18 +114,6 @@ class Annonce
         return $this;
     }
 
-    public function getRegion(): ?string
-    {
-        return $this->region;
-    }
-
-    public function setRegion(string $region): self
-    {
-        $this->region = $region;
-
-        return $this;
-    }
-
     public function getPretentions(): ?int
     {
         return $this->pretentions;
@@ -172,5 +160,21 @@ class Annonce
         $this->phoneNumber = $phoneNumber;
 
         return $this;
+    }
+
+    public function getRegion(): ?Regions
+    {
+        return $this->region;
+    }
+
+    public function setRegion(?Regions $region): self
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    public function __toString() {
+        return $this->region();
     }
 }

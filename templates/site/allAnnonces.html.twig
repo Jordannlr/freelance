@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div id="annonces">
+    {% for allannonces in annonces %}
+        <div id="annonce">
+            <p class="pix"><img src ={{ asset('build/catIT.jpg') }} width="350px" height="200px" alt=""></p>
+            <h3 class="categorie">{{ allannonces.categorie }}</h3>
+            <p class="identity">{{ allannonces.nom }} {{ allannonces.prenom }} - {{ allannonces.region }}</p>
+            <p class="new">Prétentations salariale: {{ allannonces.pretentions }}€</p>
+
+            <p class="description">Description: {{ allannonces.information }} </p>
+
+            <a href="#">Plus d'information</a>
+            
+        
+        </div>
+
+{% endfor %}
+{% endblock %}

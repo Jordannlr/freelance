@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CategorieRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RegionsRepository")
  */
-class Categorie
+class Regions
 {
     /**
      * @ORM\Id()
@@ -19,17 +19,12 @@ class Categorie
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=70)
+     * @ORM\Column(type="string", length=255)
      */
-    private $titre;
+    private $region;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Annonce", mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity="App\Entity\Annonce", mappedBy="region")
      */
     private $annonces;
 
@@ -43,32 +38,22 @@ class Categorie
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getRegion(): ?string
     {
-        return $this->titre;
+        return $this->region;
     }
 
-    public function setTitre(string $titre): self
+    public function setRegion(string $region): self
     {
-        $this->titre = $titre;
+        $this->region = $region;
 
         return $this;
     }
 
     public function __toString() {
-        return $this->titre;
-    }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
+        return $this->region;
 
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
     }
 
     /**
@@ -83,7 +68,7 @@ class Categorie
     {
         if (!$this->annonces->contains($annonce)) {
             $this->annonces[] = $annonce;
-            $annonce->setCategorie($this);
+            $annonce->setRegion($this);
         }
 
         return $this;
@@ -94,8 +79,8 @@ class Categorie
         if ($this->annonces->contains($annonce)) {
             $this->annonces->removeElement($annonce);
             // set the owning side to null (unless already changed)
-            if ($annonce->getCategorie() === $this) {
-                $annonce->setCategorie(null);
+            if ($annonce->getRegion() === $this) {
+                $annonce->setRegion(null);
             }
         }
 

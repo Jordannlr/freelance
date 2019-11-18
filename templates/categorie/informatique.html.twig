@@ -9,16 +9,25 @@
 
 <div id="annonces">
     {% for prestaIt in prestaIt %}
+    {% for catInformatique in catInformatique %}
         <div id="annonce">
-            <p class="pix"><img src ={{ asset('build/catIT.jpg') }} width="350px" height="200px" alt=""></p>
-            <h3 class="categorie">Informatique</h3>
-            <p class="identity">{{ prestaIt.nom }} {{ prestaIt.prenom }}</p>
-            <p>Description: {{ prestaIt.information }} </p>
+            <p class="pix"><img>{{ catInformatique.description }}</img></p>
+    {% endfor %}
+            <h3 class="categorie">{{ prestaIt.categorie }}</h3>
+            <p class="identity">{{ prestaIt.nom }} {{ prestaIt.prenom }} - {{ prestaIt.region }}</p>
+            <p class="new">Prétentations salariale: {{ prestaIt.pretentions }}€</p>
+
+            <p class="description">Description: {{ prestaIt.information }} </p>
 
             <a href="#">Plus d'information</a>
             
         
         </div>
 {% endfor %}
+
 </div> 
+<br>
+<div class="navigation">
+    {{ knp_pagination_render(prestaIt) }}
+</div>
 {% endblock %}

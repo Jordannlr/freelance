@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<div id="categorieTitle"> 
+    <h1>Les offres en informatique</h1>
+</div>
+
+<div id="annonces">
+
+        {% if regIdf is empty %}
+            Pas d'annonce dans cette région pour le moment
+        {% else %}
+            {% for ileDeFrance in regIdf %}
+                <div id="annonce">
+                    <p class="pix"><img src ={{ asset('build/catIT.jpg') }} width="350px" height="200px" alt=""></p>
+                    <h3 class="categorie">{{ ileDeFrance.categorie }}</h3>
+                    <p class="identity">{{ ileDeFrance.nom }} {{ ileDeFrance.prenom }} - {{ ileDeFrance.region }}</p>
+                    <p class="new">Prétentations salariale: {{ ileDeFrance.pretentions }}€</p>
+
+                    <p class="description">Description: {{ ileDeFrance.information }} </p>
+
+                    <a href="#">Plus d'information</a>
+                      
+                </div>
+            {% endfor %}
+        {% endif %}
+</div> 
+<br>
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+{% endblock %}
